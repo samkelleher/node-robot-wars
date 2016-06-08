@@ -81,9 +81,9 @@ describe('Can handle test data.', () => {
                 },
                 {
                     start: {
-                        x: 1,
+                        x: 3,
                         y: 3,
-                        heading: 'North'
+                        heading: 'East'
                     },
                     instructions: ['Move', 'Move', 'Right', 'Move', 'Move', 'Right', 'Move', 'Right', 'Right', 'Move']
                 }
@@ -115,11 +115,11 @@ describe('Can handle test data.', () => {
                 secondRobot = secondRobot || {};
 
                 expect(firstRobot.x).toBe(1);
-                expect(firstRobot.x).toBe(3);
+                expect(firstRobot.y).toBe(3);
                 expect(firstRobot.heading).toBe('North');
 
                 expect(secondRobot.x).toBe(5);
-                expect(secondRobot.x).toBe(1);
+                expect(secondRobot.y).toBe(1);
                 expect(secondRobot.heading).toBe('East');
 
                 //console.log(res.body);
