@@ -1,0 +1,24 @@
+{
+  "name": "NodeRobotWars",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "private": true,
+  "engines": {
+    "node": ">=6",
+    "npm": ">=3"
+  },
+  "author": {
+    "name": "Sam Kelleher",
+    "email": "sam@samkelleher.com",
+    "url": "https://samkelleher.com/"
+  },
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "eslint": "^2.11.1"
+  }
+}
