@@ -1,5 +1,8 @@
 import Headings from '../constants/Headings';
 import Instructions from '../constants/Instructions';
+import Debug from 'debug';
+
+const debug = Debug('App:Robot');
 
 /**
  * A battle robot.
@@ -30,6 +33,8 @@ export default class Robot {
     }
 
     moveLeft() {
+        const originalLocation = this.getNavigationString();
+
         switch (this.heading) {
             case Headings.North:
                 this.heading = Headings.West;
@@ -44,9 +49,12 @@ export default class Robot {
                 this.heading = Headings.South;
                 break;
         }
+
+        debug(`Turned Left from ${originalLocation} to ${this.getNavigationString()}`);
     }
 
     moveRight() {
+        const originalLocation = this.getNavigationString();
         switch (this.heading) {
             case Headings.North:
                 this.heading = Headings.East;
@@ -61,25 +69,35 @@ export default class Robot {
                 this.heading = Headings.North;
                 break;
         }
+
+        debug(`Turned Right from ${originalLocation} to ${this.getNavigationString()}`);
     }
 
     moveFoward() {
-
+        const originalLocation = this.getNavigationString();
         switch (this.heading) {
             case Headings.North:
                 this.y += 1;
+                debug(`Moved North from ${originalLocation} to ${this.getNavigationString()}`);
                 break;
             case Headings.South:
                 this.y -= 1;
+                debug(`Moved South from ${originalLocation} to ${this.getNavigationString()}`);
                 break;
             case Headings.East:
                 this.x += 1;
+                debug(`Moved East from ${originalLocation} to ${this.getNavigationString()}`);
                 break;
             case Headings.West:
                 this.x -= 1;
+                debug(`Moved West from ${originalLocation} to ${this.getNavigationString()}`);
                 break;
         }
 
+    }
+
+    getNavigationString() {
+        return `${this.x} ${this.y} ${this.heading.substring(0)}`;
     }
 
     executeNextInstruction() {
@@ -87,7 +105,7 @@ export default class Robot {
             return false;
         }
 
-        const currentInstruction = this.instructions.pop();
+        const currentInstruction = this.instructions.shift();
 
         if (currentInstruction === Instructions.Left) {
             this.moveLeft();
