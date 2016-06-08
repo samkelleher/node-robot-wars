@@ -3,6 +3,7 @@ import PositionSchema from '../schemas/Position';
 import Debug from 'debug';
 import boom from 'boom';
 import Joi from 'joi';
+import Robot from '../models/Robot';
 import Warzone from '../models/Warzone';
 
 const debug = Debug('App:Warzone');
@@ -33,15 +34,18 @@ export default {
 
         debug('Starting warzone request processing.');
 
+        const robots = request.payload.map(robotJson => new Robot());
+
         const warzone = new Warzone({
             width: request.params.width,
-            height: request.params.height
+            height: request.params.height,
+            robots
         });
 
         const result = warzone.goToBattle().toJSON();
 
         debug('Generated Result: ', result);
-        
+
         reply(result);
 
         debug('Finished warzone request processing.');

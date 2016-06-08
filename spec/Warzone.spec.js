@@ -90,12 +90,39 @@ describe('Can handle test data.', () => {
             ])
             .end((err, res) => {
 
-                if (err) {
-                    console.log(err);
-                }
-
                 expect(err).toBe(null);
                 expect(res).not.toBe(null);
+
+                expect(res.status).toBe(200);
+                expect(res.type).toBe('application/json');
+
+                const body = res.body;
+
+                expect(body.length).toBe(2);
+
+                let firstRobot = null;
+                let secondRobot = null;
+
+                if (body.length === 2) {
+                    firstRobot = body[0];
+                    secondRobot = body[1];
+                }
+
+                expect(firstRobot).not.toBe(null);
+                expect(secondRobot).not.toBe(null);
+
+                firstRobot = firstRobot || {};
+                secondRobot = secondRobot || {};
+
+                expect(firstRobot.x).toBe(1);
+                expect(firstRobot.x).toBe(3);
+                expect(firstRobot.heading).toBe('North');
+
+                expect(secondRobot.x).toBe(5);
+                expect(secondRobot.x).toBe(1);
+                expect(secondRobot.heading).toBe('East');
+
+                //console.log(res.body);
 
                 done();
 

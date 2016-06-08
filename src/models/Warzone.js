@@ -3,9 +3,10 @@
  */
 export default class Warzone {
 
-    constructor({width, height}) {
+    constructor({width, height, robots}) {
         this.height = height;
         this.width = width;
+        this.robots = robots;
     }
 
     goToBattle() {
