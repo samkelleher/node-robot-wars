@@ -3,6 +3,7 @@ import Debug from 'debug';
 import vision from 'vision';
 import inert from 'inert';
 import lout from 'lout';
+import Warzone from './routes/Warzone';
 
 const debug = Debug('App:Server');
 
@@ -29,20 +30,15 @@ export default function Server() {
             throw err;
         })
         .then(() => {
-            return server.register([]);
-        })
-        .then(() => {
+            server.route(Warzone);
             debug('System APIs registered.');
-        })
-        .catch((err) => {
-            debug('Failed to register routes.');
-            throw err;
+            return server.start();
         })
         .then(() => {
             return Promise.resolve(server);
         })
         .catch((e) => {
-            debug('Database failed to start, this API cannot run.', e);
+            debug('This API cannot run.', e);
             return Promise.reject(e);
         });
 
