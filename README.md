@@ -13,7 +13,8 @@ $ npm start
 ```
 
 When you start the API, you can browse to [http://localhost:8080/](http://localhost:8080/) where you will be able
-to see the described API endpoint.
+to see the described API endpoint. The API is listening for POST requests made to `http://localhost:8080/warzone/{width}/{height}`.
+See the self-generated documentation for a guide on the object format, as well as `Warzone.spec.js` for details on how it's called.
 
 ```
 $ npm test
@@ -21,7 +22,8 @@ $ npm test
 
 By executing the test, a [Jasmine](http://jasmine.github.io/) spec is executed which makes HTTP calls to the API, testing
 things like payload and request validation handling. It also tests the described use case and test data to verify the output
-matches what is expected.
+matches what is expected. All request parameters are described by using [Joi](https://github.com/hapijs/joi) which allows
+schema to be tested and defined exactly.
 
 ## Story
 A fleet of hand built robots are due to engage in battle for the annual “Robot Wars”
