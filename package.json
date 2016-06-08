@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "DEBUG=App:*,AppTest:* NODE_ENV=development nodemon src/index --exec babel-node"
   },
   "keywords": [],
   "private": true,
@@ -19,6 +20,19 @@
   },
   "license": "GPL-3.0",
   "devDependencies": {
-    "eslint": "^2.11.1"
+    "babel-cli": "^6.9.0",
+    "babel-core": "^6.9.1",
+    "babel-eslint": "^6.0.4",
+    "babel-plugin-transform-async-to-generator": "^6.8.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.8.0",
+    "eslint": "^2.11.1",
+    "nodemon": "^1.9.2"
+  },
+  "dependencies": {
+    "debug": "^2.2.0",
+    "hapi": "^13.4.1",
+    "inert": "^4.0.0",
+    "lout": "^9.0.0",
+    "vision": "^4.1.0"
   }
 }

@@ -1,0 +1,43 @@
+{
+  "rules": {
+    "indent": [
+      2,
+      4
+    ],
+    "quotes": [
+      2,
+      "single"
+    ],
+    "linebreak-style": [
+      2,
+      "unix"
+    ],
+    "semi": [
+      2,
+      "always"
+    ],
+    "no-unused-vars": [
+      2,
+      {
+        "vars": "all",
+        "args": "none"
+      }
+    ]
+  },
+  "parser": "babel-eslint",
+  "plugins": [
+
+  ],
+  "env": {
+    "es6": true,
+    "browser": false,
+    "amd": true,
+    "node": true
+  },
+  "ecmaFeatures": {
+    "modules": true,
+    "jsx": false,
+    "globalReturn": true,
+  },
+  "extends": "eslint:recommended"
+}
