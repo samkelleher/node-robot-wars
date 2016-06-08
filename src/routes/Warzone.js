@@ -1,7 +1,11 @@
 import RobotSchema from '../schemas/Robot';
+import PositionSchema from '../schemas/Position';
 import Debug from 'debug';
 import boom from 'boom';
 import Joi from 'joi';
+import Warzone from '../models/Warzone';
+
+
 const debug = Debug('App:Warzone');
 
 export default {
@@ -15,20 +19,25 @@ export default {
         tags: ['warzone'],
         auth: false,
         validate: {
-            payload: Joi.array().items(),
+            payload: Joi.array().items(RobotSchema.required()).min(1),
             params: {
-                width: Joi.string().guid().required(),
-                height: Joi.string().guid().required()
+                width: Joi.number().integer().positive().required().description('The number of squares the battlefield is wide.'),
+                height: Joi.number().integer().positive().required().description('The number of squares the battlefield is wide.')
             }
         },
         response: {
-            schema: Joi.object().keys({}).unknown()
+            schema: Joi.array().items(PositionSchema.required()).min(1)
         }
     },
     path: '/warzone/{width}/{height}',
     handler: function (request, reply) {
 
-        reply({});
+        const warzone = new Warzone({
+            width: request.params.width,
+            height: request.params.height
+        });
+
+        reply(warzone.goToBattle().toJSON());
 
     }
 };
