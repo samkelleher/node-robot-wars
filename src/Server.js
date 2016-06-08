@@ -4,6 +4,7 @@ import vision from 'vision';
 import inert from 'inert';
 import lout from 'lout';
 import Warzone from './routes/Warzone';
+import Index from './routes/Index';
 
 const debug = Debug('App:Server');
 
@@ -31,6 +32,7 @@ export default function Server() {
         })
         .then(() => {
             server.route(Warzone);
+            server.route(Index);
             debug('System APIs registered.');
             return server.start();
         })
