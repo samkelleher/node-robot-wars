@@ -2,15 +2,35 @@
 > A Hapi API for calculating positions of robots on a map.
 
 
+## Getting Started
+
+This is a Node v6 written in ES6 application that runs a [HAPI](http://hapijs.com/) server. For the first time you
+will need to install the project depdencies by running `npm install` in the project directory.
+
+```
+$ npm start
+```
+
+When you start the API, you can browse to [http://localhost:8080/](http://localhost:8080/) where you will be able
+to see the described API endpoint.
+
+```
+$ npm test
+```
+
+By executing the test, a [Jasmine](http://jasmine.github.io/) spec is executed which makes HTTP calls to the API, testing
+things like payload and request validation handling. It also tests the described use case and test data to verify the output
+matches what is expected.
+
 ## Story
 A fleet of hand built robots are due to engage in battle for the annual “Robot Wars”
 competition. Each robot will be placed within a rectangular battle arena and will
 navigate their way around the arena using a built in computer system.
 
-A robot’s location and heading is represented by a combination of x and y coordinates
+A robots location and heading is represented by a combination of x and y coordinates
 and a letter representing one of the four cardinal compass points. The
-arena is divided up into a grid to simplify navigation. An example position might be 0,
-0, N which means the robot is in the bottom left corner and facing North.
+arena is divided up into a grid to simplify navigation. An example position might be `0,
+0, N` which means the robot is in the bottom left corner and facing North.
 
 Build an API that the competition organisers can integrate with in order to move and
 navigate the robot. The only prerequisite is the API should be written in Node JS and

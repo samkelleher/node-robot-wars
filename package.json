@@ -6,7 +6,8 @@
   "scripts": {
     "test": "babel-node spec/run.js",
     "jasmine": "jasmine",
-    "dev": "DEBUG=App:* NODE_ENV=development nodemon src/index --ignore spec/ --exec babel-node"
+    "dev": "DEBUG=App:* NODE_ENV=development nodemon src/index --ignore spec/ --exec babel-node",
+    "start": "DEBUG=App:* NODE_ENV=production babel-node src/index"
   },
   "keywords": [],
   "private": true,
