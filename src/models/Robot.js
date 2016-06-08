@@ -27,11 +27,20 @@ export default class Robot {
         return this.instructions.length > 0;
     }
 
+    /**
+     * Places the robot on a given warzone. This allows the robot to sense the edges of the zone.
+     * @param warzone
+     * @returns {Robot}
+     */
     placeOnWarzone(warzone) {
         this.warzone = warzone;
         return this;
     }
 
+    /**
+     * Turn the robot left.
+     * @returns {Robot}
+     */
     moveLeft() {
         const originalLocation = this.getNavigationString();
 
@@ -51,8 +60,14 @@ export default class Robot {
         }
 
         debug(`Turned Left from ${originalLocation} to ${this.getNavigationString()}`);
+
+        return this;
     }
 
+    /**
+     * Turn the robot right.
+     * @returns {Robot}
+     */
     moveRight() {
         const originalLocation = this.getNavigationString();
         switch (this.heading) {
@@ -71,8 +86,14 @@ export default class Robot {
         }
 
         debug(`Turned Right from ${originalLocation} to ${this.getNavigationString()}`);
+
+        return this;
     }
 
+    /**
+     * Make the robot take one step forward.
+     * @returns {Robot}
+     */
     moveFoward() {
         const originalLocation = this.getNavigationString();
         switch (this.heading) {
@@ -94,12 +115,22 @@ export default class Robot {
                 break;
         }
 
+        return this;
+
     }
 
+    /**
+     * Get a string that indicate the position of the robot on the map.
+     * @returns {string}
+     */
     getNavigationString() {
         return `${this.x} ${this.y} ${this.heading.substring(0)}`;
     }
 
+    /**
+     * If an instruction is available, the robot will execute it.
+     * @returns {boolean} - Indictes if the robot made an instruction or not.
+     */
     executeNextInstruction() {
         if (!this.hasInstructions()) {
             return false;
@@ -119,6 +150,10 @@ export default class Robot {
 
     }
 
+    /**
+     * Return a JSON represenation of the robots position and heading.
+     * @returns {{x: (number), y: (number), heading: (string)}}
+     */
     toJSON() {
         return {
             x: this.x,
