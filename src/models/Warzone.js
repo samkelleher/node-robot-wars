@@ -13,7 +13,11 @@ export default class Warzone {
     }
 
     toJSON() {
-        return {};
+        return [{
+            x: 1,
+            y: 3,
+            heading: 'North'
+        }];
     }
 
 }

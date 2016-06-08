@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "DEBUG=App:*,AppTest:* NODE_ENV=development nodemon src/index --exec babel-node"
+    "test": "babel-node spec/run.js",
+    "jasmine": "jasmine",
+    "dev": "DEBUG=App:* NODE_ENV=development nodemon src/index --ignore spec/ --exec babel-node"
   },
   "keywords": [],
   "private": true,
@@ -26,7 +27,9 @@
     "babel-plugin-transform-async-to-generator": "^6.8.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.8.0",
     "eslint": "^2.11.1",
-    "nodemon": "^1.9.2"
+    "jasmine": "^2.4.1",
+    "nodemon": "^1.9.2",
+    "superagent": "^2.0.0"
   },
   "dependencies": {
     "boom": "^3.2.1",

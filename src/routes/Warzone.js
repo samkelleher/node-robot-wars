@@ -5,7 +5,6 @@ import boom from 'boom';
 import Joi from 'joi';
 import Warzone from '../models/Warzone';
 
-
 const debug = Debug('App:Warzone');
 
 export default {
@@ -32,12 +31,20 @@ export default {
     path: '/warzone/{width}/{height}',
     handler: function (request, reply) {
 
+        debug('Starting warzone request processing.');
+
         const warzone = new Warzone({
             width: request.params.width,
             height: request.params.height
         });
 
-        reply(warzone.goToBattle().toJSON());
+        const result = warzone.goToBattle().toJSON();
+
+        debug('Generated Result: ', result);
+        
+        reply(result);
+
+        debug('Finished warzone request processing.');
 
     }
 };
