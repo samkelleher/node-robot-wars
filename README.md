@@ -5,7 +5,8 @@
 ## Getting Started
 
 This is a Node v6 written in ES6 application that runs a [HAPI](http://hapijs.com/) server. For the first time you
-will need to install the project depdencies by running `npm install` in the project directory.
+will need to install the project depdencies by running `npm install` in the project directory. Because the code is using
+ES6 features, items not supported by Node6 (such as module imports) are automatically transpiled by [Babel](https://babeljs.io/).
 
 ```
 $ npm start
