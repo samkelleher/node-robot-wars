@@ -34,15 +34,23 @@ export default {
 
         debug('Starting warzone request processing.');
 
-        const robots = request.payload.map(robotJson => new Robot());
 
         const warzone = new Warzone({
             width: request.params.width,
-            height: request.params.height,
-            robots
+            height: request.params.height
         });
 
-        const result = warzone.goToBattle().toJSON();
+        const robots = request.payload.map(robotJson => new Robot({
+            x: robotJson.start.x,
+            y: robotJson.start.y,
+            heading: robotJson.start.heading,
+            instructions: robotJson.instructions
+        }));
+
+        const result = warzone
+            .placeRobots(robots)
+            .goToBattle()
+            .toJSON();
 
         debug('Generated Result: ', result);
 
