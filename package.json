@@ -22,12 +22,12 @@
   },
   "license": "GPL-3.0",
   "devDependencies": {
-    "babel-cli": "^6.9.0",
+    "babel-cli": "^6.10.1",
     "babel-core": "^6.9.1",
     "babel-eslint": "^6.0.4",
     "babel-plugin-transform-async-to-generator": "^6.8.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.8.0",
-    "eslint": "^2.11.1",
+    "eslint": "^2.12.0",
     "jasmine": "^2.4.1",
     "nodemon": "^1.9.2",
     "superagent": "^2.0.0"
